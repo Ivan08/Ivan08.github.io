@@ -27,7 +27,7 @@
       b.setAttribute('data-task', t.id);
       b.appendChild(h('span', 'task-title', t.title));
       var m = t.pairs ? t.pairs[0].after : (t.project ? null : t.metric);
-      if (m) b.appendChild(h('b', 'task-metric', m));
+      if (m && m.length <= 10) b.appendChild(h('b', 'task-metric', m));
       tasks.appendChild(b);
     });
     card.appendChild(tasks);
@@ -87,7 +87,7 @@
   });
 
   /* ---------- появление ---------- */
-  var items = document.querySelectorAll('.stat, .axis, .project, .gain, .head, .timeline, .contact');
+  var items = document.querySelectorAll('.stat, .focus-card, .axis, .project, .gain, .head, .timeline, .contact');
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('anim');
   var io = new IntersectionObserver(function (entries) {

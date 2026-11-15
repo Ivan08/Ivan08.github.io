@@ -141,6 +141,11 @@ h2 { font-weight: 800; font-size: clamp(30px, 4.2vw, 60px); line-height: 1.02; l
 .terms p { font-size: 19px; font-weight: 600; line-height: 1.4; letter-spacing: -.01em; max-width: 44em; }
 
 /* ---------- оси ---------- */
+.focus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.focus-card { display: flex; flex-direction: column; gap: 16px; padding: 30px; background: var(--paper); border-radius: var(--r); box-shadow: var(--shadow); }
+.focus-card h3 { font-weight: 800; font-size: 30px; letter-spacing: -.03em; line-height: 1.08; }
+.focus-card p { font-size: 17px; line-height: 1.5; color: var(--ink-2); }
+.focus-card .axis-tasks { margin-top: auto; }
 .axes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .axis { display: flex; flex-direction: column; gap: 16px; padding: 26px; background: var(--paper); border-radius: var(--r); box-shadow: var(--shadow); }
 .axis h3 { font-weight: 800; font-size: 24px; letter-spacing: -.03em; line-height: 1.1; }
@@ -332,7 +337,7 @@ h2 { font-weight: 800; font-size: clamp(30px, 4.2vw, 60px); line-height: 1.02; l
 .tip[hidden] { display: none; }
 
 /* ---------- появление ---------- */
-.anim .stat, .anim .axis, .anim .project, .anim .gain, .anim .head, .anim .timeline, .anim .contact {
+.anim .stat, .anim .focus-card, .anim .axis, .anim .project, .anim .gain, .anim .head, .anim .timeline, .anim .contact {
   opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s cubic-bezier(.2, .8, .2, 1), border-color .15s, box-shadow .15s; }
 .anim .in { opacity: 1; transform: none; }
 
@@ -360,7 +365,9 @@ h2 { font-weight: 800; font-size: clamp(30px, 4.2vw, 60px); line-height: 1.02; l
 @media (max-width: 720px) {
   body { font-size: 16px; }
   :root { --r: 22px; }
-  .projects, .gains, .axes { grid-template-columns: 1fr; }
+  .projects, .gains, .axes, .focus { grid-template-columns: 1fr; }
+  .focus-card { padding: 24px; }
+  .focus-card h3 { font-size: 26px; }
   .stats { gap: 12px; }
   .stat { padding: 20px; rotate: none !important; }
   .stat span { font-size: 14.5px; }
