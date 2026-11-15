@@ -67,8 +67,6 @@
     p.features.slice(0, idx === 0 ? 5 : 3).forEach(function (f) { ul.appendChild(h('li', null, f)); });
     body.appendChild(ul);
 
-    body.appendChild(h('p', 'p-fact', p.role));
-
     var tags = h('div', 'tags');
     p.stack.forEach(function (s) { tags.appendChild(h('span', 'tag', s)); });
     body.appendChild(tags);

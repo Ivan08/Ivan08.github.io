@@ -302,6 +302,7 @@ h2 { font-weight: 800; font-size: clamp(30px, 4.2vw, 60px); line-height: 1.02; l
 .tm-row { display: grid; grid-template-columns: 110px 1fr; gap: 14px; }
 .tm-row h4 { font: 500 12px/1.6 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; }
 .tm-row p { font-size: 16px; }
+.tm-text { font-size: 17px; line-height: 1.55; }
 .tm-shot { border-radius: 10px; border: 1px solid var(--line); }
 .tm-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
 .tm-foot [hidden] { display: none; }

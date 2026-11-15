@@ -60,7 +60,8 @@
 
     var body = $('tm-body');
     body.textContent = '';
-    [['Условия', t.context], ['Что сделал', t.did], ['Результат', t.result]].forEach(function (p) {
+    if (t.text) body.appendChild(el('p', 'tm-text', t.text));
+    [['Задача', t.context], ['Решение', t.did], ['Результат', t.result]].forEach(function (p) {
       if (!p[1]) return;
       var row = el('div', 'tm-row');
       row.appendChild(el('h4', null, p[0]));

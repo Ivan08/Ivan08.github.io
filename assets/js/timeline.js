@@ -22,7 +22,7 @@
   controls.appendChild(prev); controls.appendChild(range); controls.appendChild(next);
 
   var mapWrap = h('div', 'tl-mapwrap');
-  var mapNote = h('p', 'tl-mapnote', 'Весь путь с 2009 года. Рамка — то, что сейчас на ленте: тяните её или нажмите на любой период.');
+  var mapNote = h('p', 'tl-mapnote', 'Весь путь с 2009 года. Рамка показывает участок на ленте: её можно перетащить, а на любой период — нажать.');
   var map = h('div', 'tl-map');
   var win = h('div', 'tl-win');
   mapWrap.appendChild(mapNote); mapWrap.appendChild(map);
@@ -150,7 +150,7 @@
   mwin.style.left = P(RECENT);
   mwin.style.right = '0';
   mmap.appendChild(mwin);
-  mob.appendChild(h('p', 'tl-mapnote', 'Весь путь с 2009 года. В рамке — последние пять лет, они показаны ниже.'));
+  mob.appendChild(h('p', 'tl-mapnote', 'Весь путь с 2009 года. Ниже показаны последние пять лет.'));
   mob.appendChild(mmap);
   var older = h('div', 'tl-older');
   older.hidden = true;
@@ -173,7 +173,7 @@
     card.appendChild(chips);
     (j.to > RECENT ? mob : older).appendChild(card);
   });
-  var moreBtn = h('button', 'btn btn-ghost tl-more', 'Показать ранний опыт: 2009–2019');
+  var moreBtn = h('button', 'btn btn-ghost tl-more', 'Ранний опыт: 2009–2019');
   moreBtn.type = 'button';
   moreBtn.addEventListener('click', function () {
     older.hidden = false;
