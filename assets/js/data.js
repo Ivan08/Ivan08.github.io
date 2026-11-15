@@ -102,7 +102,7 @@ window.SITE = (function () {
     { id: 'leads', axis: 'integr', job: '3snet', where: S3,
       title: 'Обработка входящих лидов', short: 'Обработка лидов',
       pairs: [{ label: 'Обработка входящего лида', before: '12 часов', after: '5 минут' }],
-      text: 'Перестроил обработку входящих лидов в CRM.',
+      text: 'Перестроил обработку входящих лидов.',
       stack: S3STACK },
     { id: 'registration', axis: 'integr', job: '3snet', where: S3,
       title: 'Микросервис регистрации и модерации', short: 'Сервис регистрации',
