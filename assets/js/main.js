@@ -1,4 +1,4 @@
-/* Карточки осей, проекты, выбор темы, появление блоков. */
+/* Карточки осей, проекты, появление блоков. */
 (function () {
   var S = window.SITE, h = window.h;
 
@@ -87,28 +87,6 @@
     card.appendChild(body);
     list.appendChild(card);
   });
-
-  /* ---------- выбор темы (временный, пока цвет не выбран) ---------- */
-  var THEMES = [['blue', 'Синяя'], ['green', 'Изумрудная'], ['violet', 'Фиолетовая'], ['mono', 'Чёрно-белая'], ['warm', 'Тёплая']];
-  var picker = document.getElementById('themes');
-  if (picker) {
-    var root = document.documentElement;
-    THEMES.forEach(function (t) {
-      var b = h('button', 'th th-' + t[0]);
-      b.type = 'button';
-      b.title = t[1];
-      b.setAttribute('aria-label', 'Тема: ' + t[1]);
-      b.setAttribute('aria-pressed', root.getAttribute('data-theme') === t[0] ? 'true' : 'false');
-      b.addEventListener('click', function () {
-        root.setAttribute('data-theme', t[0]);
-        try { localStorage.setItem('theme', t[0]); } catch (e) {}
-        Array.prototype.forEach.call(picker.querySelectorAll('.th'), function (x) {
-          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
-        });
-      });
-      picker.appendChild(b);
-    });
-  }
 
   /* ---------- появление ---------- */
   var items = document.querySelectorAll('.stat, .axis, .project, .gain, .head, .timeline, .contact');

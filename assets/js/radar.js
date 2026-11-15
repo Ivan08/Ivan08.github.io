@@ -15,9 +15,9 @@
 
   function build(compact) {
     host.textContent = '';
-    var W = compact ? 400 : 640, H = compact ? 410 : 590;
-    var R = compact ? 118 : 205, cx = W / 2, cy = H / 2 + (compact ? 2 : 4);
-    var fs = compact ? 12.5 : 15;
+    var W = compact ? 400 : 660, H = compact ? 410 : 600;
+    var R = compact ? 118 : 205, cx = W / 2, cy = H / 2 + (compact ? 2 : 0);
+    var fs = compact ? 12.5 : 17;
     var n = S.AXES.length;
 
     function pt(i, v) {
@@ -44,12 +44,6 @@
 
     var me = svg('polygon', { points: poly(0), class: 'r-me' }, root);
     svg('polygon', { points: poly(S.SENIOR), class: 'r-senior' }, root);
-
-    /* подпись пунктира — между первой и последней осью */
-    var a0 = pt(0, S.SENIOR), a7 = pt(n - 1, S.SENIOR);
-    var sl = svg('text', { x: (a0[0] + a7[0]) / 2 - 2, y: (a0[1] + a7[1]) / 2 + 4,
-      class: 'r-senior-label', 'text-anchor': 'middle', 'font-size': fs * 0.74 }, root);
-    sl.textContent = 'SENIOR';
 
     /* подписи осей */
     S.AXES.forEach(function (ax, i) {
@@ -80,7 +74,7 @@
           'data-tip': t.title,
           'aria-label': t.title, style: '--d:' + (i * 50 + k * 60) + 'ms' }, dots);
         svg('circle', { cx: p[0], cy: p[1], r: compact ? 13 : 15, class: 'r-hit' }, g);
-        svg('circle', { cx: p[0], cy: p[1], r: compact ? 5.2 : 6.5, class: 'r-pin' }, g);
+        svg('circle', { cx: p[0], cy: p[1], r: compact ? 5.2 : 5.5, class: 'r-pin' }, g);
         g.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.openTask(t.id); }
         });

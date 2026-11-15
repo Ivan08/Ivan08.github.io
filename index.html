@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru" data-theme="blue">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,20 +8,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ivan08.github.io/">
 <meta property="og:title" content="Иван Переломов — Tech Lead, архитектор, Senior Backend">
-<meta property="og:description" content="Круг компетенций, решённые задачи с цифрами и пять собственных продуктов.">
+<meta property="og:description" content="Шесть проблем бизнеса, которые я уже решал, круг компетенций и пять собственных продуктов.">
 <meta property="og:image" content="https://ivan08.github.io/assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/Inter-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-<script>
-(function () {
-  var ok = ['blue', 'green', 'violet', 'mono', 'warm'], t = null;
-  try {
-    t = new URLSearchParams(location.search).get('theme') || localStorage.getItem('theme');
-  } catch (e) {}
-  if (ok.indexOf(t) >= 0) document.documentElement.setAttribute('data-theme', t);
-})();
-</script>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -34,7 +25,6 @@
     <a href="#projects">Проекты</a>
     <a href="#path">Опыт</a>
   </nav>
-  <div class="themes" id="themes" aria-label="Цветовая тема"></div>
   <a class="btn btn-sm" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Написать</a>
 </header>
 
@@ -43,7 +33,7 @@
 <section class="hero" id="hero">
   <div class="hero-text">
     <p class="eyebrow">Tech Lead · Архитектор · Senior Backend · AI-разработка</p>
-    <h1>Иван<br>Переломов</h1>
+    <h1>Иван<br><span>Переломов</span></h1>
     <p class="pitch">Строю разработку, которая даёт бизнесу результат: проектирую систему, пишу код сам и веду команду до&nbsp;релиза.</p>
     <p class="lead">В 3snet вырос из разработчика в руководителя технического отдела из&nbsp;15&nbsp;человек. Заявки стали обрабатываться за 5&nbsp;минут вместо 12&nbsp;часов, потери новых клиентов сократились в&nbsp;4&nbsp;раза.</p>
     <div class="cta">
@@ -54,28 +44,29 @@
   </div>
 
   <div class="hero-radar">
-    <div class="radar-wrap" id="radar" aria-label="Круг компетенций"></div>
-    <div class="legend">
-      <span class="lg lg-me">мой уровень</span>
-      <span class="lg lg-senior">уровень Senior</span>
-      <span class="lg lg-dot">решённая задача — нажмите</span>
+    <div class="radar-card">
+      <div class="radar-wrap" id="radar" aria-label="Круг компетенций"></div>
+      <div class="legend">
+        <span class="lg lg-me">мой уровень</span>
+        <span class="lg lg-senior">уровень Senior</span>
+        <span class="lg lg-dot">решённая задача — нажмите</span>
+      </div>
     </div>
-    <p class="legend-note">Уровни — самооценка. Каждая точка подтверждена задачей.</p>
   </div>
 </section>
 
 <section class="stats" aria-label="Коротко в цифрах">
-  <div class="stat"><b>2012</b><span>с этого года в коммерческой веб-разработке</span></div>
+  <div class="stat"><b>с 2012</b><span>в коммерческой веб-разработке</span></div>
   <div class="stat"><b>5+ лет</b><span>в роли техлида и архитектора</span></div>
-  <div class="stat"><b>15 человек</b><span>технический отдел, который собрал сам</span></div>
-  <div class="stat"><b>5 продуктов</b><span>сделал самостоятельно</span></div>
+  <div class="stat stat-dark"><b>15 человек</b><span>технический отдел, который собрал сам</span></div>
+  <div class="stat"><b>5 продуктов</b><span>своих, от идеи до релиза</span></div>
 </section>
 
 <section class="block" id="gains">
   <div class="head">
     <p class="eyebrow">Что получит бизнес</p>
     <h2>Шесть проблем, которые я уже решал</h2>
-    <p class="sub">Слева — как это звучит у владельца бизнеса. Справа — что получилось в&nbsp;3snet. За каждой цифрой стоит задача: нажмите, чтобы увидеть условия и решение.</p>
+    <p class="sub">Сверху — как это звучит у владельца бизнеса. Ниже — что получилось в&nbsp;3snet и как именно.</p>
   </div>
   <div class="gains">
     <button class="gain" type="button" data-task="leads">
@@ -98,7 +89,7 @@
     </button>
     <button class="gain" type="button" data-task="yii-symfony">
       <span class="gain-pain">«Систему страшно трогать: вдруг всё встанет»</span>
-      <span class="gain-num"><b>0 простоя</b></span>
+      <span class="gain-num"><b>без простоя</b></span>
       <span class="gain-text">Сменили фреймворк под живым трафиком: 120 эндпоинтов за 2 недели, сервис не останавливался.</span>
       <span class="more">Как это сделано</span>
     </button>
@@ -116,7 +107,7 @@
     </button>
   </div>
   <div class="terms">
-    <p><b>Как работаю:</b> только удалённо · готов приступить сразу · беру архитектуру, код и команду — вместе или по отдельности.</p>
+    <p>Могу взять на себя архитектуру, код и команду — всё вместе или одну из частей. Работаю удалённо, готов приступить сразу.</p>
     <a class="btn" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Обсудить задачу</a>
   </div>
 </section>
@@ -124,8 +115,8 @@
 <section class="block" id="skills">
   <div class="head">
     <p class="eyebrow">Компетенции</p>
-    <h2>Что стоит за каждой осью</h2>
-    <p class="sub">Восемь направлений. У каждого — стек и задачи, которые я решил. Нажмите на задачу, чтобы увидеть условия, решение и результат.</p>
+    <h2>Восемь направлений и чем подтверждено каждое</h2>
+    <p class="sub">Уровень — моя оценка. Под ним — задачи, которые я решил в этом направлении.</p>
   </div>
   <div class="axes" id="axes"></div>
 </section>
@@ -133,8 +124,8 @@
 <section class="block" id="projects">
   <div class="head">
     <p class="eyebrow">Свои проекты</p>
-    <h2>От идеи до работающего продукта — сам</h2>
-    <p class="sub">Пять продуктов, которые я спроектировал и реализовал самостоятельно: от архитектуры до сайта и документации. Нажмите на карточку — внутри описание, возможности и скриншоты.</p>
+    <h2>Пять продуктов, которые я сделал сам</h2>
+    <p class="sub">Спроектировал и довёл до релиза: архитектура, код, сайт и документация.</p>
   </div>
   <div class="projects" id="projects-list"></div>
 </section>
@@ -143,7 +134,7 @@
   <div class="head">
     <p class="eyebrow">Опыт</p>
     <h2>Где работал и какие задачи решал</h2>
-    <p class="sub">На ленте — последние пять лет. Каждая метка — решённая задача, нажмите на неё. Внутри периода метки расставлены условно, без привязки к датам. Образование: АлтГТУ, 2007–2012, факультет информационных технологий.</p>
+    <p class="sub">Последние пять лет — на ленте, весь путь с&nbsp;2009&nbsp;года — на карте под ней. Метки внутри периода расставлены условно.</p>
   </div>
   <div class="timeline" id="timeline"></div>
 </section>
@@ -151,7 +142,7 @@
 <section class="contact" id="contact">
   <p class="eyebrow">Контакты</p>
   <h2>Давайте обсудим вашу задачу</h2>
-  <p class="sub">Расскажите, что сейчас мешает бизнесу в разработке, — отвечу, как бы я это решал. Только удалённо, готов приступить сразу.</p>
+  <p class="sub">Опишите, что мешает бизнесу в разработке. Отвечу, с чего бы я начал.</p>
   <div class="cta">
     <a class="btn btn-lg" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Telegram: @IvanPerelomov</a>
     <a class="btn btn-ghost btn-lg" href="mailto:perelomov_iv@mail.ru">perelomov_iv@mail.ru</a>
