@@ -70,15 +70,15 @@
     var dots = svg('g', { class: 'r-dots' }, root);
     S.AXES.forEach(function (ax, i) {
       var list = S.TASKS.filter(function (t) { return t.axis === ax.id; });
-      var lo = 34, hi = ax.level - 7;
+      var lo = 30, hi = ax.level - 6;
       list.forEach(function (t, k) {
         var v = list.length === 1 ? hi : lo + (hi - lo) * k / (list.length - 1);
         /* первые задачи — самые сильные, ставим их дальше от центра */
         v = lo + hi - v;
         var p = pt(i, v);
         var g = svg('g', { class: 'r-dot', tabindex: 0, role: 'button', 'data-task': t.id,
-          'data-tip': t.metric ? t.title + ' · ' + t.metric : t.title,
-          'aria-label': t.title, style: '--d:' + (i * 60 + k * 90) + 'ms' }, dots);
+          'data-tip': t.title,
+          'aria-label': t.title, style: '--d:' + (i * 50 + k * 60) + 'ms' }, dots);
         svg('circle', { cx: p[0], cy: p[1], r: compact ? 13 : 15, class: 'r-hit' }, g);
         svg('circle', { cx: p[0], cy: p[1], r: compact ? 5.2 : 6.5, class: 'r-pin' }, g);
         g.addEventListener('keydown', function (e) {

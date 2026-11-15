@@ -1,4 +1,4 @@
-/* Карточки осей, проекты, появление блоков. */
+/* Карточки осей, проекты, выбор темы, появление блоков. */
 (function () {
   var S = window.SITE, h = window.h;
 
@@ -26,7 +26,8 @@
       b.type = 'button';
       b.setAttribute('data-task', t.id);
       b.appendChild(h('span', 'task-title', t.title));
-      if (t.metric) b.appendChild(h('b', 'task-metric', t.metric));
+      var m = t.pairs ? t.pairs[0].after : (t.project ? null : t.metric);
+      if (m) b.appendChild(h('b', 'task-metric', m));
       tasks.appendChild(b);
     });
     card.appendChild(tasks);
@@ -41,69 +42,82 @@
   var list = document.getElementById('projects-list');
   S.PROJECTS.forEach(function (p, idx) {
     var card = h('article', 'project' + (idx === 0 ? ' project-wide' : ''));
-    var cur = 0;
 
-    var media = h('div', 'p-media');
-    var main = h('button', 'p-main');
-    main.type = 'button';
-    main.setAttribute('aria-label', 'Увеличить скриншот: ' + p.name);
+    var media = h('button', 'p-main');
+    media.type = 'button';
+    media.setAttribute('data-project', p.id);
+    media.setAttribute('aria-label', 'Подробнее о проекте ' + p.name);
     var img = h('img');
-    img.loading = 'lazy'; img.width = 1280; img.height = 800;
-    main.appendChild(img);
-    media.appendChild(main);
-
-    var thumbs = h('div', 'p-thumbs');
-    function show(i) {
-      cur = i;
-      img.src = 'assets/img/projects/' + p.shots[i][0] + '.webp';
-      img.alt = p.shots[i][1];
-      Array.prototype.forEach.call(thumbs.children, function (c, k) {
-        c.setAttribute('aria-pressed', k === i ? 'true' : 'false');
-      });
-    }
-    p.shots.forEach(function (s, i) {
-      var t = h('button', 'p-thumb');
-      t.type = 'button';
-      t.setAttribute('aria-label', s[1]);
-      var ti = h('img');
-      ti.src = 'assets/img/projects/' + s[0] + '.webp';
-      ti.alt = ''; ti.loading = 'lazy'; ti.width = 1280; ti.height = 800;
-      t.appendChild(ti);
-      t.addEventListener('click', function () { show(i); });
-      thumbs.appendChild(t);
-    });
-    media.appendChild(thumbs);
-    main.addEventListener('click', function () { window.openShots(p.shots, cur); });
-    show(0);
+    img.src = window.shotSrc(p.shots[0][0]);
+    img.alt = p.shots[0][1];
+    img.width = 1280; img.height = 800;
+    media.appendChild(img);
+    media.appendChild(h('span', 'p-count', p.shots.length + ' скриншота'));
     card.appendChild(media);
 
     var body = h('div', 'p-body');
-    body.appendChild(h('span', 'p-tag', p.tag));
+    var top = h('div', 'p-top');
+    top.appendChild(h('span', 'p-tag', p.tag));
+    top.appendChild(h('span', 'p-status', p.status));
+    body.appendChild(top);
     body.appendChild(h('h3', null, p.name));
-    body.appendChild(h('p', 'p-text', p.text));
-    body.appendChild(h('p', 'p-fact', p.fact));
+    body.appendChild(h('p', 'p-problem', p.problem));
+
+    var ul = h('ul', 'p-features');
+    p.features.slice(0, idx === 0 ? 5 : 3).forEach(function (f) { ul.appendChild(h('li', null, f)); });
+    body.appendChild(ul);
+
+    body.appendChild(h('p', 'p-fact', p.role));
+
     var tags = h('div', 'tags');
     p.stack.forEach(function (s) { tags.appendChild(h('span', 'tag', s)); });
     body.appendChild(tags);
-    var links = h('div', 'p-links');
-    p.links.forEach(function (l) {
-      var a = h('a', null, l[1] + ' ↗');
+
+    var foot = h('div', 'p-foot');
+    var more = h('button', 'btn btn-sm', 'Подробнее');
+    more.type = 'button';
+    more.setAttribute('data-project', p.id);
+    foot.appendChild(more);
+    p.links.slice(0, 2).forEach(function (l) {
+      var a = h('a', 'p-link', l[1] + ' ↗');
       a.href = l[0]; a.target = '_blank'; a.rel = 'noopener';
-      links.appendChild(a);
+      foot.appendChild(a);
     });
-    body.appendChild(links);
+    body.appendChild(foot);
     card.appendChild(body);
     list.appendChild(card);
   });
 
+  /* ---------- выбор темы (временный, пока цвет не выбран) ---------- */
+  var THEMES = [['blue', 'Синяя'], ['green', 'Изумрудная'], ['violet', 'Фиолетовая'], ['mono', 'Чёрно-белая'], ['warm', 'Тёплая']];
+  var picker = document.getElementById('themes');
+  if (picker) {
+    var root = document.documentElement;
+    THEMES.forEach(function (t) {
+      var b = h('button', 'th th-' + t[0]);
+      b.type = 'button';
+      b.title = t[1];
+      b.setAttribute('aria-label', 'Тема: ' + t[1]);
+      b.setAttribute('aria-pressed', root.getAttribute('data-theme') === t[0] ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        root.setAttribute('data-theme', t[0]);
+        try { localStorage.setItem('theme', t[0]); } catch (e) {}
+        Array.prototype.forEach.call(picker.querySelectorAll('.th'), function (x) {
+          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+        });
+      });
+      picker.appendChild(b);
+    });
+  }
+
   /* ---------- появление ---------- */
-  var items = document.querySelectorAll('.stat, .axis, .project, .why-card, .head, .timeline, .contact');
+  var items = document.querySelectorAll('.stat, .axis, .project, .gain, .head, .timeline, .contact');
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('anim');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, { rootMargin: '0px 0px -8% 0px' });
+  }, { rootMargin: '0px 0px -6% 0px' });
   Array.prototype.forEach.call(items, function (n) { io.observe(n); });
 })();

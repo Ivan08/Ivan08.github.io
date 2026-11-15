@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="blue">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Иван Переломов — Tech Lead, архитектор, Senior Backend</title>
-<meta name="description" content="Проектирую backend, пишу код сам и веду команду до релиза. PHP / Symfony, архитектура, руководство разработкой, AI-разработка. Удалённо.">
+<meta name="description" content="Строю разработку, которая даёт бизнесу результат: проектирую систему, пишу код сам и веду команду до релиза. Удалённо.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ivan08.github.io/">
 <meta property="og:title" content="Иван Переломов — Tech Lead, архитектор, Senior Backend">
@@ -13,6 +13,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/Inter-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function () {
+  var ok = ['blue', 'green', 'violet', 'mono', 'warm'], t = null;
+  try {
+    t = new URLSearchParams(location.search).get('theme') || localStorage.getItem('theme');
+  } catch (e) {}
+  if (ok.indexOf(t) >= 0) document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -20,11 +29,12 @@
 <header class="top">
   <a class="brand" href="#hero" aria-label="В начало"><span class="mono-mark">ИП</span><span class="brand-name">Иван Переломов</span></a>
   <nav class="nav" aria-label="Разделы">
+    <a href="#gains">Результаты</a>
     <a href="#skills">Компетенции</a>
     <a href="#projects">Проекты</a>
-    <a href="#path">Путь</a>
-    <a href="#why">Почему я</a>
+    <a href="#path">Опыт</a>
   </nav>
+  <div class="themes" id="themes" aria-label="Цветовая тема"></div>
   <a class="btn btn-sm" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Написать</a>
 </header>
 
@@ -34,11 +44,11 @@
   <div class="hero-text">
     <p class="eyebrow">Tech Lead · Архитектор · Senior Backend · AI-разработка</p>
     <h1>Иван<br>Переломов</h1>
-    <p class="pitch">Проектирую backend, пишу код сам и веду команду до&nbsp;релиза.</p>
-    <p class="lead">В 3snet прошёл путь от разработчика до руководителя технического отдела из&nbsp;15&nbsp;человек. Переносил CRM на новый фреймворк без простоя, выносил бизнес-логику в сервисы и автоматизировал работу с лидами.</p>
+    <p class="pitch">Строю разработку, которая даёт бизнесу результат: проектирую систему, пишу код сам и веду команду до&nbsp;релиза.</p>
+    <p class="lead">В 3snet вырос из разработчика в руководителя технического отдела из&nbsp;15&nbsp;человек. Заявки стали обрабатываться за 5&nbsp;минут вместо 12&nbsp;часов, потери новых клиентов сократились в&nbsp;4&nbsp;раза.</p>
     <div class="cta">
       <a class="btn" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Написать в Telegram</a>
-      <a class="btn btn-ghost" href="#projects">Смотреть проекты</a>
+      <a class="btn btn-ghost" href="#gains">Что получит бизнес</a>
     </div>
     <p class="where">Барнаул · только удалённо · готов приступить сразу</p>
   </div>
@@ -61,6 +71,56 @@
   <div class="stat"><b>5 продуктов</b><span>сделал самостоятельно</span></div>
 </section>
 
+<section class="block" id="gains">
+  <div class="head">
+    <p class="eyebrow">Что получит бизнес</p>
+    <h2>Шесть проблем, которые я уже решал</h2>
+    <p class="sub">Слева — как это звучит у владельца бизнеса. Справа — что получилось в&nbsp;3snet. За каждой цифрой стоит задача: нажмите, чтобы увидеть условия и решение.</p>
+  </div>
+  <div class="gains">
+    <button class="gain" type="button" data-task="leads">
+      <span class="gain-pain">«Заявки ждут часами, клиенты уходят»</span>
+      <span class="gain-num"><s>12 часов</s><b>5 минут</b></span>
+      <span class="gain-text">Перестроил обработку входящих лидов. Заявка обрабатывается за минуты, а не за полдня.</span>
+      <span class="more">Как это сделано</span>
+    </button>
+    <button class="gain" type="button" data-task="losses">
+      <span class="gain-pain">«Теряем новых клиентов и не понимаем где»</span>
+      <span class="gain-num"><b>в 4 раза</b></span>
+      <span class="gain-text">Меньше потерь новых клиентов после автоматизации процессов и сбора данных. По внутренней оценке, прибыль выросла на 80%.</span>
+      <span class="more">Как это сделано</span>
+    </button>
+    <button class="gain" type="button" data-task="nocode">
+      <span class="gain-pain">«Любое изменение процесса — неделя разработки»</span>
+      <span class="gain-num"><s>неделя</s><b>2 часа</b></span>
+      <span class="gain-text">Менеджеры сами собирают бизнес-процесс в админке, без программиста.</span>
+      <span class="more">Как это сделано</span>
+    </button>
+    <button class="gain" type="button" data-task="yii-symfony">
+      <span class="gain-pain">«Систему страшно трогать: вдруг всё встанет»</span>
+      <span class="gain-num"><b>0 простоя</b></span>
+      <span class="gain-text">Сменили фреймворк под живым трафиком: 120 эндпоинтов за 2 недели, сервис не останавливался.</span>
+      <span class="more">Как это сделано</span>
+    </button>
+    <button class="gain" type="button" data-task="recovery">
+      <span class="gain-pain">«Сбой останавливает работу на дни»</span>
+      <span class="gain-num"><s>2 дня</s><b>5 минут</b></span>
+      <span class="gain-text">Автоматизировал восстановление после сбоев. Ошибочное массовое обновление откатили за 2 часа без простоя.</span>
+      <span class="more">Как это сделано</span>
+    </button>
+    <button class="gain" type="button" data-task="team">
+      <span class="gain-pain">«Разработка держится на одном человеке»</span>
+      <span class="gain-num"><b>15 человек</b></span>
+      <span class="gain-text">Собрал отдел с нуля и сам всех нанял. Новый сотрудник входит в проект за 3 дня, команда сама доводит задачу до релиза.</span>
+      <span class="more">Как это сделано</span>
+    </button>
+  </div>
+  <div class="terms">
+    <p><b>Как работаю:</b> только удалённо · готов приступить сразу · беру архитектуру, код и команду — вместе или по отдельности.</p>
+    <a class="btn" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Обсудить задачу</a>
+  </div>
+</section>
+
 <section class="block" id="skills">
   <div class="head">
     <p class="eyebrow">Компетенции</p>
@@ -74,57 +134,24 @@
   <div class="head">
     <p class="eyebrow">Свои проекты</p>
     <h2>От идеи до работающего продукта — сам</h2>
-    <p class="sub">Пять проектов, которые я спроектировал и реализовал самостоятельно. Скриншоты настоящие — нажмите, чтобы увеличить.</p>
+    <p class="sub">Пять продуктов, которые я спроектировал и реализовал самостоятельно: от архитектуры до сайта и документации. Нажмите на карточку — внутри описание, возможности и скриншоты.</p>
   </div>
   <div class="projects" id="projects-list"></div>
 </section>
 
-<section class="block" id="path">
+<section class="block block-wide" id="path">
   <div class="head">
-    <p class="eyebrow">Путь</p>
-    <h2>От администратора до руководителя разработки</h2>
-    <p class="sub">Точки на ленте — решённые задачи. Внутри периода они расставлены условно, без привязки к датам.</p>
+    <p class="eyebrow">Опыт</p>
+    <h2>Где работал и какие задачи решал</h2>
+    <p class="sub">На ленте — последние пять лет. Каждая метка — решённая задача, нажмите на неё. Внутри периода метки расставлены условно, без привязки к датам. Образование: АлтГТУ, 2007–2012, факультет информационных технологий.</p>
   </div>
   <div class="timeline" id="timeline"></div>
-</section>
-
-<section class="block" id="why">
-  <div class="head">
-    <p class="eyebrow">Почему я</p>
-    <h2>Четыре причины и доказательство к каждой</h2>
-  </div>
-  <div class="why">
-    <button class="why-card" type="button" data-task="business">
-      <span class="why-n">01</span>
-      <h3>Считаю результат во времени и деньгах бизнеса</h3>
-      <p>Потери новых клиентов сократились в 4 раза; по внутренней оценке, прибыль выросла на 80%.</p>
-      <span class="more">Открыть задачу</span>
-    </button>
-    <button class="why-card" type="button" data-task="yii-symfony">
-      <span class="why-n">02</span>
-      <h3>Меняю систему, не останавливая её</h3>
-      <p>Сменили фреймворк под живым трафиком: 120 эндпоинтов за 2 недели, без простоя.</p>
-      <span class="more">Открыть задачу</span>
-    </button>
-    <button class="why-card" type="button" data-task="team">
-      <span class="why-n">03</span>
-      <h3>Собираю команду и довожу её до самостоятельности</h3>
-      <p>Сам нанял отдел из 15 человек. Онбординг — до 3 дней.</p>
-      <span class="more">Открыть задачу</span>
-    </button>
-    <button class="why-card" type="button" data-task="mgate">
-      <span class="why-n">04</span>
-      <h3>Быстро превращаю идею в работающий продукт</h3>
-      <p>Почтовый сервер с веб-почтой и админкой — за неделю, в агентском режиме.</p>
-      <span class="more">Открыть задачу</span>
-    </button>
-  </div>
 </section>
 
 <section class="contact" id="contact">
   <p class="eyebrow">Контакты</p>
   <h2>Давайте обсудим вашу задачу</h2>
-  <p class="sub">Архитектор, технический лидер, Senior Backend или AI-разработка. Только удалённо, готов приступить сразу.</p>
+  <p class="sub">Расскажите, что сейчас мешает бизнесу в разработке, — отвечу, как бы я это решал. Только удалённо, готов приступить сразу.</p>
   <div class="cta">
     <a class="btn btn-lg" href="https://t.me/IvanPerelomov" target="_blank" rel="noopener">Telegram: @IvanPerelomov</a>
     <a class="btn btn-ghost btn-lg" href="mailto:perelomov_iv@mail.ru">perelomov_iv@mail.ru</a>
@@ -133,7 +160,6 @@
     <li><a href="https://github.com/Ivan08" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="https://career.habr.com/ivan8-113712" target="_blank" rel="noopener">Хабр Карьера</a></li>
     <li><a href="https://hh.ru/resume/bd36fd78ff111387b80039ed1f316b336a786a" target="_blank" rel="noopener">Резюме на hh.ru</a></li>
-    <li><a href="https://hh.ru/resume/6532b209ff111c24fa0039ed1f436e33506a6e" target="_blank" rel="noopener">Второе резюме на hh.ru</a></li>
   </ul>
 </section>
 
@@ -145,7 +171,7 @@
 </footer>
 
 <noscript>
-  <div class="noscript">Для круга компетенций, проектов и ленты пути нужен JavaScript. Написать можно и без него: Telegram @IvanPerelomov, perelomov_iv@mail.ru.</div>
+  <div class="noscript">Для круга компетенций, проектов и ленты опыта нужен JavaScript. Написать можно и без него: Telegram @IvanPerelomov, perelomov_iv@mail.ru.</div>
 </noscript>
 
 <dialog class="modal" id="task-modal" aria-labelledby="tm-title">
@@ -157,12 +183,38 @@
     <div class="tm-body" id="tm-body"></div>
     <div class="tags" id="tm-stack"></div>
     <div class="tm-foot">
-      <a class="btn btn-sm" id="tm-link" target="_blank" rel="noopener"></a>
+      <button class="btn btn-sm" type="button" id="tm-link"></button>
       <span class="tm-nav">
         <button type="button" id="tm-prev" aria-label="Предыдущая задача">←</button>
         <span id="tm-count"></span>
         <button type="button" id="tm-next" aria-label="Следующая задача">→</button>
       </span>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal modal-project" id="project-modal" aria-labelledby="pm-title">
+  <div class="modal-in">
+    <button class="x" type="button" data-close aria-label="Закрыть">×</button>
+    <div class="pm-grid">
+      <div class="pm-media">
+        <button class="p-main" type="button" id="pm-zoom" aria-label="Увеличить скриншот"><img id="pm-img" alt="" width="1280" height="800"></button>
+        <p class="pm-cap" id="pm-cap"></p>
+        <div class="p-thumbs" id="pm-thumbs"></div>
+      </div>
+      <div class="pm-info">
+        <div class="p-top"><span class="p-tag" id="pm-tag"></span><span class="p-status" id="pm-status"></span></div>
+        <h3 id="pm-title"></h3>
+        <p class="pm-problem" id="pm-problem"></p>
+        <p class="pm-text" id="pm-text"></p>
+        <h4>Что умеет</h4>
+        <ul class="p-features" id="pm-features"></ul>
+        <h4>Из чего состоит</h4>
+        <div class="tags" id="pm-parts"></div>
+        <h4>Моя роль</h4>
+        <p class="p-fact" id="pm-role"></p>
+        <div class="pm-links" id="pm-links"></div>
+      </div>
     </div>
   </div>
 </dialog>
