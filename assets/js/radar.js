@@ -16,8 +16,8 @@
   function build(compact) {
     host.textContent = '';
     var W = compact ? 400 : 660, H = compact ? 410 : 600;
-    var R = compact ? 118 : 205, cx = W / 2, cy = H / 2 + (compact ? 2 : 0);
-    var fs = compact ? 12.5 : 17;
+    var R = compact ? 108 : 205, cx = W / 2, cy = H / 2 + (compact ? 2 : 0);
+    var fs = compact ? 14 : 17;
     var n = S.AXES.length;
 
     function pt(i, v) {
@@ -73,8 +73,8 @@
         var g = svg('g', { class: 'r-dot', tabindex: 0, role: 'button', 'data-task': t.id,
           'data-tip': t.title,
           'aria-label': t.title, style: '--d:' + (i * 50 + k * 60) + 'ms' }, dots);
-        svg('circle', { cx: p[0], cy: p[1], r: compact ? 13 : 15, class: 'r-hit' }, g);
-        svg('circle', { cx: p[0], cy: p[1], r: compact ? 5.2 : 5.5, class: 'r-pin' }, g);
+        svg('circle', { cx: p[0], cy: p[1], r: compact ? 14 : 15, class: 'r-hit' }, g);
+        svg('circle', { cx: p[0], cy: p[1], r: compact ? 5.6 : 5.5, class: 'r-pin' }, g);
         g.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.openTask(t.id); }
         });

@@ -86,6 +86,19 @@
     list.appendChild(card);
   });
 
+  /* ---------- меню на узких экранах ---------- */
+  var top = document.querySelector('.top'), mb = document.getElementById('menu-btn');
+  function setMenu(open) {
+    top.classList.toggle('open', open);
+    mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  mb.addEventListener('click', function () { setMenu(!top.classList.contains('open')); });
+  document.addEventListener('click', function (e) {
+    if (!top.classList.contains('open')) return;
+    if (e.target.closest('.nav a') || !e.target.closest('.top')) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
   /* ---------- появление ---------- */
   var items = document.querySelectorAll('.stat, .focus-card, .axis, .project, .gain, .head, .timeline, .contact');
   if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
