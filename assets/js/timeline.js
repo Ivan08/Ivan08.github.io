@@ -22,10 +22,9 @@
   controls.appendChild(prev); controls.appendChild(range); controls.appendChild(next);
 
   var mapWrap = h('div', 'tl-mapwrap');
-  var mapNote = h('p', 'tl-mapnote', 'Положение задач внутри периода условное');
   var map = h('div', 'tl-map');
   var win = h('div', 'tl-win');
-  mapWrap.appendChild(mapNote); mapWrap.appendChild(map);
+  mapWrap.appendChild(map);
 
   var desk = h('div', 'tl-desk');
   desk.appendChild(controls);
@@ -150,7 +149,6 @@
   mwin.style.left = P(RECENT);
   mwin.style.right = '0';
   mmap.appendChild(mwin);
-  mob.appendChild(h('p', 'tl-mapnote', 'Опыт с 2009 года'));
   mob.appendChild(mmap);
   var older = h('div', 'tl-older');
   older.hidden = true;

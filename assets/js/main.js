@@ -11,7 +11,7 @@
 
     var bar = h('div', 'lvl');
     bar.setAttribute('role', 'img');
-    bar.setAttribute('aria-label', 'Мой уровень выше уровня Senior');
+    bar.setAttribute('aria-label', 'Уровень относительно Senior');
     var fill = h('i', 'lvl-fill');
     fill.style.setProperty('--v', ax.level + '%');
     bar.appendChild(fill);

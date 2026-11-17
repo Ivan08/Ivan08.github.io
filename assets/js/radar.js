@@ -32,7 +32,7 @@
     }
 
     var root = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img',
-      'aria-label': 'Круг компетенций: восемь направлений, мой уровень выше уровня Senior по каждому' }, host);
+      'aria-label': 'Круг компетенций: восемь направлений' }, host);
 
     [20, 40, 60, 80, 100].forEach(function (v) {
       svg('polygon', { points: poly(v), class: 'r-ring' + (v === 100 ? ' r-ring-out' : '') }, root);
