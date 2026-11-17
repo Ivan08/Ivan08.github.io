@@ -11,7 +11,7 @@
   var view = h('div', 'tl-view');
   view.tabIndex = 0;
   view.setAttribute('role', 'region');
-  view.setAttribute('aria-label', 'Лента пути, прокручивается по горизонтали');
+  view.setAttribute('aria-label', 'Опыт работы по годам');
   var canvas = h('div', 'tl-canvas');
   view.appendChild(canvas);
 
@@ -22,7 +22,7 @@
   controls.appendChild(prev); controls.appendChild(range); controls.appendChild(next);
 
   var mapWrap = h('div', 'tl-mapwrap');
-  var mapNote = h('p', 'tl-mapnote', 'Весь путь с 2009 года. Рамка показывает участок на ленте: её можно перетащить, а на любой период — нажать.');
+  var mapNote = h('p', 'tl-mapnote', 'Положение задач внутри периода условное');
   var map = h('div', 'tl-map');
   var win = h('div', 'tl-win');
   mapWrap.appendChild(mapNote); mapWrap.appendChild(map);
@@ -150,7 +150,7 @@
   mwin.style.left = P(RECENT);
   mwin.style.right = '0';
   mmap.appendChild(mwin);
-  mob.appendChild(h('p', 'tl-mapnote', 'Весь путь с 2009 года. Ниже показаны последние пять лет.'));
+  mob.appendChild(h('p', 'tl-mapnote', 'Опыт с 2009 года'));
   mob.appendChild(mmap);
   var older = h('div', 'tl-older');
   older.hidden = true;
